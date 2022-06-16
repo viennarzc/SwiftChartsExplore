@@ -10,7 +10,7 @@ import SwiftUI
 struct TabbedView: View {
     var body: some View {
         TabView {
-            ContentView()
+            ManyChartsView()
                 .tabItem {
                     Label("Charts", systemImage: "chart.bar.xaxis")
                 }

@@ -24,12 +24,12 @@ struct Product: Identifiable {
 
 
 let data: [Product] = [
-    .init(name: "Nintendo 64", salesCount: 42, year: 2020, category: .console),
-    .init(name: "Playstation", salesCount: 4, year: 2020, category: .console),
-    .init(name: "Dreamcast", salesCount: 15, year: 2018, category: .console),
-    .init(name: "Xbox", salesCount: 34, year: 2020, category: .console),
-    .init(name: "Gameboy", salesCount: 92, year: 2018, category: .handheld),
-    .init(name: "PS Vita", salesCount: 1, year: 2021, category: .handheld),
+    .init(name: "Nintendo 64", salesCount: 42, year: 1998, category: .console),
+    .init(name: "Playstation", salesCount: 4, year: 1999, category: .console),
+    .init(name: "Dreamcast", salesCount: 15, year: 2000, category: .console),
+    .init(name: "Xbox", salesCount: 34, year: 2002, category: .console),
+    .init(name: "Gameboy", salesCount: 92, year: 1995, category: .handheld),
+    .init(name: "PS Vita", salesCount: 1, year: 2006, category: .handheld),
 ]
 
 struct InputChartsView: View {
@@ -60,8 +60,8 @@ struct InputChartsView: View {
                 .pickerStyle(SegmentedPickerStyle())
             Chart(data) { item in
                 BarMark(
-                    x: .value("Name", item.name),
-                    y: .value("Sales", item.salesCount))
+                    x: .value("Sales", item.salesCount),
+                    y: .value("Name", item.name))
                 .foregroundStyle(by: .value(pickerValue.title, pickerValue == .category ? item.category.rawValue : item.name ))
                 
                 
