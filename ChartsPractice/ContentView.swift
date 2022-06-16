@@ -27,22 +27,56 @@ let employees: [Employee] = [
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Chart(employees) { item in
-                BarMark(
-                    x: .value("Tickets", item.tickets),
-                    y: .value("Name", item.name))
+        ScrollView(.vertical) {
+            VStack(spacing: 16) {
+                Chart(employees) { item in
+                    BarMark(
+                        x: .value("Tickets", item.tickets),
+                        y: .value("Name", item.name))
+                }
+                .frame(height: 200)
+                
+                Chart(employees) { item in
+                    
+                    LineMark(
+                        x: .value("Name", item.name),
+                        y: .value("Tickets", item.tickets))
+                    .foregroundStyle(.red)
+                
+                }
+                .frame(height: 200)
+                
+                HStack {
+                    Chart(employees) { item in
+                        AreaMark(x: .value("Test", item.name), y: .value("Tix", item.tickets))
+                        
+                    }
+                    .chartLegend(.hidden)
+                    
+                    Chart(employees) { item in
+                        
+                        PointMark(x: .value("Test", item.name), y: .value("Tix", item.tickets))
+                            .foregroundStyle(.pink)
+                        
+                    }
+                    .chartYAxis(.hidden)
+                    
+                    
+                }
+                .frame(height: 200)
+                
+                Chart(employees) { item in
+                    RuleMark(xStart: 80, xEnd: 200, y: .value("Tickets", item.tickets))
+                        .foregroundStyle(.purple)
+                }
+                .frame(height: 200)
+                
+                
+                
             }
             
-            Chart(employees) { item in
-                LineMark(
-                    x: .value("Name", item.name),
-                    y: .value("Tickets", item.tickets))
-            }
-            
+            .padding()
         }
-        
-        .padding()
     }
 }
 
